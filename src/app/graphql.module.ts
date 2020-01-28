@@ -1,13 +1,15 @@
+import { HttpHeaders } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const uri = 'https://api.github.com/graphql';
+const token = 'GITHUB_TOKEN';
 
 export function createApollo(httpLink: HttpLink) {
   return {
-    link: httpLink.create({ uri }),
+    link: httpLink.create({ uri, headers: new HttpHeaders({ 'Authorization': `Bearer ${token}` }) }),
     cache: new InMemoryCache(),
   };
 }

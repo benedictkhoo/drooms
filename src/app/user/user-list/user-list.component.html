@@ -1,0 +1,52 @@
+<div class="mat-elevation-z8">
+  <table
+    mat-table
+    #table
+    [dataSource]="dataSource"
+    [hidden]="dataSource.loading$ | async"
+    matSort
+    aria-label="GitHub Users"
+  >
+    <!-- Avatar Column -->
+    <ng-container matColumnDef="avatarUrl">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user">
+        <img [src]="user.avatarUrl" width="50px" height="50px" />
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let user">
+        <a [href]="user.url" target="_blank"
+          >{{ user.name ? user.name : "N/A"
+          }}<mat-icon>open_in_new</mat-icon></a
+        >
+      </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let user">
+        {{ user.email ? user.email : "N/A" }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let user; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    #paginator
+    [hidden]="dataSource.loading$ | async"
+    [pageIndex]="0"
+    [pageSize]="25"
+    [pageSizeOptions]="[25, 50, 100]"
+    [showFirstLastButtons]="true"
+  >
+  </mat-paginator>
+
+  <mat-spinner *ngIf="dataSource.loading$ | async"></mat-spinner>
+</div>
