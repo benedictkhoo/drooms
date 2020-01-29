@@ -20,6 +20,7 @@ export interface UserListItem {
   avatarUrl: string;
   name: string;
   email: string;
+  login: string;
   url: string;
 }
 
@@ -70,6 +71,7 @@ export class UserListDataSource extends DataSource<UserListItem> {
                   name
                   email
                   id
+                  login
                   url
                 }
               }

@@ -1,6 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatIconModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatDialogModule,
+  MatIconModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserRoutingModule } from './user-routing.module';
 
@@ -12,8 +22,12 @@ import { UserRoutingModule } from './user-routing.module';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatCardModule,
+    MatListModule
   ],
-  declarations: [UserListComponent]
+  declarations: [UserListComponent, UserDetailComponent],
+  entryComponents: [UserDetailComponent]
 })
 export class UserModule { }

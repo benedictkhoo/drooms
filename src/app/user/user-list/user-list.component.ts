@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { Apollo } from 'apollo-angular';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { UserListDataSource } from './user-list-datasource';
 
 @Component({
@@ -15,9 +16,13 @@ export class UserListComponent implements OnInit {
 
   displayedColumns = ['avatarUrl', 'name', 'email'];
 
-  constructor(private apollo: Apollo) { }
+  constructor(private dialog: MatDialog, private apollo: Apollo) { }
 
   ngOnInit() {
     this.dataSource = new UserListDataSource(this.apollo, this.paginator, this.sort);
+  }
+
+  userDetail(login: string): void {
+    this.dialog.open(UserDetailComponent, { data: { login }, width: '50%' });
   }
 }

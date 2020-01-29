@@ -1,0 +1,24 @@
+<mat-card *ngIf="user; else loading;">
+  <mat-card-header>
+    <img mat-card-avatar [src]="user.avatarUrl" width="40px" height="40px">
+    <mat-card-title>{{ user.name }}</mat-card-title>
+    <mat-card-subtitle *ngIf="user.location">{{ user.location }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p *ngIf="user.bio">
+      {{ user.bio }}
+    </p>
+    <p *ngIf="user.repositories.totalCount > 0">
+      Repositories:<br>
+      <mat-list>
+        <mat-list-item *ngFor="let repo of user.repositories.names">{{ repo }}</mat-list-item>
+      </mat-list>
+    </p>
+    <p>Followers: {{ user.followers }}</p>
+    <p>Following: {{ user.following }}</p>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

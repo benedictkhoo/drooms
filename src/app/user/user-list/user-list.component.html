@@ -35,7 +35,11 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let user; columns: displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let user; columns: displayedColumns"
+      (click)="userDetail(user.login)"
+    ></tr>
   </table>
 
   <mat-paginator
