@@ -1,4 +1,9 @@
 <div class="mat-elevation-z8">
+  <mat-form-field [hidden]="dataSource.loading$ | async">
+    <input matInput [formControl]="search" placeholder="Search" type="search">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
   <table
     mat-table
     #table

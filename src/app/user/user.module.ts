@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatCardModule,
   MatDialogModule,
+  MatFormFieldModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
@@ -18,11 +21,14 @@ import { UserRoutingModule } from './user-routing.module';
   imports: [
     CommonModule,
     UserRoutingModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatDialogModule,
     MatCardModule,
     MatListModule

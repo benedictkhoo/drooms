@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { Apollo } from 'apollo-angular';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
@@ -15,11 +16,12 @@ export class UserListComponent implements OnInit {
   dataSource: UserListDataSource;
 
   displayedColumns = ['avatarUrl', 'name', 'email'];
+  search = new FormControl('');
 
   constructor(private dialog: MatDialog, private apollo: Apollo) { }
 
   ngOnInit() {
-    this.dataSource = new UserListDataSource(this.apollo, this.paginator, this.sort);
+    this.dataSource = new UserListDataSource(this.apollo, this.paginator, this.sort, this.search);
   }
 
   userDetail(login: string): void {
